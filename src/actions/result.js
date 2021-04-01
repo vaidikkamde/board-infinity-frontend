@@ -33,7 +33,7 @@ export const setPlayList = (playlists)=>{
 }
 export const addPlaylist = (playlists)=>{
     return({
-        type:SET_PLAYLIST,
+        type:ADD_PLAYLIST,
         playlists
     })
 }
