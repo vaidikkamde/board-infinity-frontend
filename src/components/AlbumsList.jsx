@@ -13,7 +13,7 @@ function AlbumsList({ albums }) {
                 <Card style={{ width: "18rem" }}>
                   <a
                     target="_blank"
-                    href="albums.external_urls.spotify"
+                    href={album.external_urls.spotify}
                     rel="noopner noreferrer"
                     className="card-image-link"
                   >

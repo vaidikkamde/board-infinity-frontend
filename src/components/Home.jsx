@@ -26,7 +26,7 @@ const Home = (props) => {
           {sessionExpired && (
             <Alert variant="info">Session expired. Please login again.</Alert>
           )}
-          <Button variant="success" type="submit" onClick={handleLogin}>
+          <Button variant="success" type="submit" onClick={handleLogin} className="login-btn">
             Login to spotify
           </Button>
         </div>

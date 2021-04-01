@@ -20,12 +20,14 @@
   .btn {
     letter-spacing: 1px;
     font-family: 'Hind', sans-serif;
-    background-color: #ff1d8e;
   }
-  .btn:hover{
+  .login-btn{
+    background-color: #ff1d8e;
+
+  }
+  .login-btn:hover{
     background-color: #ff0381;
   }
-  
   .login {
     display: flex;
     flex-direction: column;
@@ -39,7 +41,7 @@
   
   .main {
     width: 90%;
-    margin: 2rem auto;
+    margin: 7rem auto;
   }
   
   .form-control {
@@ -49,6 +51,25 @@
   .main-heading {
     margin: 2rem 0;
     text-align: center;
+  }
+  .float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    top:40px;
+    right:40px;
+    background-color:#fff;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 99999;
+  }
+  .float:hover{
+    box-shadow: 2px 2px 8px #999;
+  }
+  .my-float{
+    margin-top: 9px;
+    width: 42px;
   }
   
   .hide {
@@ -140,7 +161,6 @@
     letter-spacing: 1px;
     font-weight: bold;
     color: #778298;
-    background-color: transparent;
   }
   
   .search-buttons .btn:focus {
