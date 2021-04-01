@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <h3 align="center">SDE - Frontend (Intern) Hiring Challange</h3>
 
-### `npm start`
+  <p align="center">
+    An assignment for Board Infinity SDE - Frontend (Intern) Hiring Challange
+    <br />
+    <a href="https://github.com/vaidikkamde/board-infinity-frontend.git"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://board-infinity-frontend.vercel.app/dashboard">Vercel Hosted Demo</a>
+  </p>
+</p>
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<br/>
+This app uses [SpotifyAPI](https://developer.spotify.com/) to search for artists albums and playlist for the search query entered by the user. React-Redux is being used to manange app state and storing data fetched from the API.
 
-### `npm run build`
+We authorize the app using the Oauth2 provided by spotify and store the access token in the localstorage using the following code lines
+```js
+const handleLogin = () => {
+  window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URL}&response_type=token&show_dialog=true`;
+};
+```
+We run the function when the user clicks "Login To Spotify" button on the homepage.
+If user is authenticated they will be redirected to the dashboard page else they will be redirected to the home page and will be shown the error message. This functionality is provided by RedirectPage.jsx .
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+On the dashboard page user can give a text input to search for the albums artists and playlist. On clicking search the redux-reducer present in reducers folders will add the relevent result to the redux store.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+On successful execution the loading flag is set to false and the results are shown to the user in a mosiac pattern.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The access token is valid for 3600 seconds or 1 hour after which the user is prompted again to login and authenticate.
+### Built With
+This project is build using:
+* [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+* [axios](https://www.npmjs.com/package/axios)
+* [redux](https://www.npmjs.com/package/redux)
+* [react-redux](https://www.npmjs.com/package/react-redux)
+* [redux-thunk](https://www.npmjs.com/package/redux-thunk)
+* [lodash](https://www.npmjs.com/package/lodash)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- GETTING STARTED -->
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To get a local copy up and running follow these simple example steps.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+You will need the latest LTS version of [Node](https://nodejs.org/en/download/) and NPM
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Create the account at [https://developer.spotify.com/dashboard/login](https://developer.spotify.com/dashboard/login) . Click login and login using your spotify account.
 
-### Code Splitting
+2.  Click on "Create An App" and enter the app name and description and then click on the "CREATE" button.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Take note of the Client ID.
 
-### Analyzing the Bundle Size
+4. Clone the repo
+   ```sh
+   git clone https://github.com/vaidikkamde/board-infinity-frontend.git
+   ```
+5. Change Directory to board-infinity-frontend
+    ```sh
+    cd board-infinity-frontend
+    ```
+6. Install NPM packages
+   ```sh
+   npm install
+   ```
+7. Create a .env file in the root of the project and add the following details in it:
+    ```env
+    REACT_APP_CLIENT_ID=your_client_id
+    REACT_APP_AUTHORIZE_URL=https://accounts.spotify.com/authorize
+    REACT_APP_REDIRECT_URL=http://localhost:3000/redirect
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- USAGE EXAMPLES -->
+## Usage
 
-### Advanced Configuration
+After the installation run
+   ```sh
+   npm start
+   ```
+This will launch the app at [http://localhost:3000/](http://localhost:3000/)
+<!-- CONTACT -->
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Vaidik Kamde - [@vaidik_kamde.jsx](https://www.instagram.com/vaidik_kamde.jsx/) - vaidik16206138@gmail.com
 
-### Deployment
+Project Link: [https://github.com/vaidikkamde/board-infinity-frontend.git](https://github.com/vaidikkamde/board-infinity-frontend.git)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+
+* [Best-README-Template by @othneildrew](https://github.com/othneildrew/Best-README-Template.git)
+* [React Redux Tutorial by Codevolution](https://youtube.com/playlist?list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK)
+
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/vaidik-kamde
+[product-screenshot]: src/images/screenshot2.png
