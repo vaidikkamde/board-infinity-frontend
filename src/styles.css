@@ -179,7 +179,9 @@
     margin: 1.5rem;
     box-shadow: 2px 8px 17px 2px #949ca5
   }
-  
+  .card:hover {
+    box-shadow: 2px 8px 17px 7px #949ca5;
+}
   .card .card-image-link {
     padding: 1rem;
     text-align: center;
